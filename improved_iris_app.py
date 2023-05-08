@@ -35,10 +35,10 @@ rf_clf.fit(X_train,y_train)
 log_reg=LogisticRegression(n_jobs=-1)
 log_reg.fit(X_train,y_train)
 
-score = svc_model.score(X_train, y_train)
+
 @st.cache()
-def prediction(SepalLength, SepalWidth, PetalLength, PetalWidth):
-  species = svc_model.predict([[SepalLength, SepalWidth, PetalLength, PetalWidth]])
+def prediction(model,SepalLength, SepalWidth, PetalLength, PetalWidth):
+  species = model.predict([[SepalLength, SepalWidth, PetalLength, PetalWidth]])
   species = species[0]
   if species == 0:
     return "Iris-setosa"
